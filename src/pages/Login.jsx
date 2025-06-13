@@ -5,13 +5,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/cura-pet-logo.png';
 
 const Login = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const formik = useFormik({
-  //   initialValues: {
-  //     mobile: '',
-  //     password: '',
-  //   },
+  const formik = useFormik({
+    initialValues: {
+      mobile: '',
+      password: '',
+    },
   //   validationSchema: Yup.object({
   //     mobile: Yup.string()
   //       .matches(/^\d{10}$/, 'Mobile number must be 10 digits')
@@ -43,7 +43,7 @@ const Login = () => {
   //       alert('Error: ' + err.message);
   //     }
   //   },
-  // });
+  });
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
