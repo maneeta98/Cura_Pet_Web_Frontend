@@ -18,31 +18,31 @@ const Login = () => {
         .required('Mobile number is required'),
       password: Yup.string().required('Password is required'),
     }),
-  //   onSubmit: async values => {
-  //     try {
-  //       const res = await fetch('http://localhost:5050/api/auth/login', {
-  //         method: 'POST',
-  //         headers: { 'Content-Type': 'application/json' },
-  //         body: JSON.stringify({
-  //           mobile: values.mobile,
-  //           password: values.password,
-  //         }),
-  //       });
+    onSubmit: async values => {
+      try {
+        const res = await fetch('http://localhost:5050/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            mobile: values.mobile,
+            password: values.password,
+          }),
+        });
 
-  //       const data = await res.json();
+        const data = await res.json();
 
-  //       if (!res.ok) {
-  //         alert(data.message || 'Login failed');
-  //       } else {
-  //         // Save token in localStorage
-  //         localStorage.setItem('token', data.token);
-  //         alert('Login successful!');
-  //         navigate('/dashboard');
-  //       }
-  //     } catch (err) {
-  //       alert('Error: ' + err.message);
-  //     }
-  //   },
+        if (!res.ok) {
+          alert(data.message || 'Login failed');
+        } else {
+          // // Save token in localStorage
+          // localStorage.setItem('token', data.token);
+          // alert('Login successful!');
+          // navigate('/dashboard');
+        }
+      } catch (err) {
+        alert('Error: ' + err.message);
+      }
+    },
   });
 
   return (
