@@ -7,13 +7,13 @@ import logo from '../assets/cura-pet-logo.png';
 const Register = () => {
   // const navigate = useNavigate();
 
-  // const formik = useFormik({
-  //   initialValues: {
-  //     name: '',
-  //     mobile: '',
-  //     password: '',
-  //     confirmPassword: '',
-  //   },
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      mobile: '',
+      password: '',
+      confirmPassword: '',
+    },
   //   validationSchema: Yup.object({
   //     name: Yup.string().required('Name is required'),
   //     mobile: Yup.string()
