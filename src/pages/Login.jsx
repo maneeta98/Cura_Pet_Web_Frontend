@@ -12,12 +12,12 @@ const Login = () => {
       mobile: '',
       password: '',
     },
-  //   validationSchema: Yup.object({
-  //     mobile: Yup.string()
-  //       .matches(/^\d{10}$/, 'Mobile number must be 10 digits')
-  //       .required('Mobile number is required'),
-  //     password: Yup.string().required('Password is required'),
-  //   }),
+    validationSchema: Yup.object({
+      mobile: Yup.string()
+        .matches(/^\d{10}$/, 'Mobile number must be 10 digits')
+        .required('Mobile number is required'),
+      password: Yup.string().required('Password is required'),
+    }),
   //   onSubmit: async values => {
   //     try {
   //       const res = await fetch('http://localhost:5050/api/auth/login', {
