@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/cura-pet-logo.png';
 
 const Register = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -14,43 +14,43 @@ const Register = () => {
       password: '',
       confirmPassword: '',
     },
-  //   validationSchema: Yup.object({
-  //     name: Yup.string().required('Name is required'),
-  //     mobile: Yup.string()
-  //       .matches(/^\d{10}$/, 'Enter a valid 10-digit mobile number')
-  //       .required('Mobile is required'),
-  //     password: Yup.string()
-  //       .min(6, 'Password must be at least 6 characters')
-  //       .required('Password is required'),
-  //     confirmPassword: Yup.string()
-  //       .oneOf([Yup.ref('password'), null], 'Passwords must match')
-  //       .required('Confirm Password is required'),
-  //   }),
-  //   onSubmit: async values => {
-  //     try {
-  //       const res = await fetch('http://localhost:5050/api/auth/register', {
-  //         method: 'POST',
-  //         headers: { 'Content-Type': 'application/json' },
-  //         body: JSON.stringify({
-  //           name: values.name,
-  //           mobile: values.mobile,
-  //           password: values.password,
-  //         }),
-  //       });
+    validationSchema: Yup.object({
+      name: Yup.string().required('Name is required'),
+      mobile: Yup.string()
+        .matches(/^\d{10}$/, 'Enter a valid 10-digit mobile number')
+        .required('Mobile is required'),
+      password: Yup.string()
+        .min(6, 'Password must be at least 6 characters')
+        .required('Password is required'),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        .required('Confirm Password is required'),
+    }),
+    // onSubmit: async values => {
+    //   try {
+    //     const res = await fetch('http://localhost:5050/api/auth/register', {
+    //       method: 'POST',
+    //       headers: { 'Content-Type': 'application/json' },
+    //       body: JSON.stringify({
+    //         name: values.name,
+    //         mobile: values.mobile,
+    //         password: values.password,
+    //       }),
+    //     });
 
-  //       const data = await res.json();
+    //     const data = await res.json();
 
-  //       if (!res.ok) {
-  //         alert(data.message || 'Registration failed');
-  //       } else {
-  //         alert('Registration Successful!');
-  //         navigate('/login'); // redirect to login page
-  //       }
-  //     } catch (err) {
-  //       alert('Error: ' + err.message);
-  //     }
-  //   },
-  // });
+    //     if (!res.ok) {
+    //       alert(data.message || 'Registration failed');
+    //     } else {
+    //       alert('Registration Successful!');
+    //       navigate('/login'); // redirect to login page
+    //     }
+    //   } catch (err) {
+    //     alert('Error: ' + err.message);
+    //   }
+    },
+  });
 
   return (
     <div className="flex min-h-screen">
