@@ -26,30 +26,30 @@ const Register = () => {
         .oneOf([Yup.ref('password'), null], 'Passwords must match')
         .required('Confirm Password is required'),
     }),
-    // onSubmit: async values => {
-    //   try {
-    //     const res = await fetch('http://localhost:5050/api/auth/register', {
-    //       method: 'POST',
-    //       headers: { 'Content-Type': 'application/json' },
-    //       body: JSON.stringify({
-    //         name: values.name,
-    //         mobile: values.mobile,
-    //         password: values.password,
-    //       }),
-    //     });
+    onSubmit: async values => {
+      try {
+        const res = await fetch('http://localhost:5050/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: values.name,
+            mobile: values.mobile,
+            password: values.password,
+          }),
+        });
 
-    //     const data = await res.json();
+        const data = await res.json();
 
-    //     if (!res.ok) {
-    //       alert(data.message || 'Registration failed');
-    //     } else {
-    //       alert('Registration Successful!');
-    //       navigate('/login'); // redirect to login page
-    //     }
-    //   } catch (err) {
-    //     alert('Error: ' + err.message);
+        if (!res.ok) {
+          alert(data.message || 'Registration failed');
+        } else {
+          alert('Registration Successful!');
+          navigate('/login'); // redirect to login page
+        }
+      } catch (err) {
+        alert('Error: ' + err.message);
     //   }
-    },
+    }
   });
 
   return (
