@@ -34,10 +34,10 @@ const Login = () => {
         if (!res.ok) {
           alert(data.message || 'Login failed');
         } else {
-          // // Save token in localStorage
-          // localStorage.setItem('token', data.token);
-          // alert('Login successful!');
-          // navigate('/dashboard');
+          // Save token in localStorage
+          localStorage.setItem('token', data.token);
+          alert('Login successful!');
+          navigate('/dashboard');
         }
       } catch (err) {
         alert('Error: ' + err.message);
