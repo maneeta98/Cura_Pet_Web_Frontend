@@ -1,98 +1,73 @@
-// import React from 'react';
-// import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import React from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// // import Login from './pages/Login';
-// // import Register from './pages/Register';
-// import Dashboard from './pages/Dashboard';
-// import PetsList from './pages/PetsList';
-// import AppointmentsList from './pages/AppointmentsList';
-// import PrivateLayout from './layouts/PrivateLayout';
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import AdminLayout from "./layouts/admin/AdminLayout"; // Renamed for clarity
+import MealsPage from "./pages/admin/MealsPage";
+import AppointmentsPage from "./pages/admin/AppointmentsPage";
+import PetsPage from "./pages/admin/PetsPage";
+import DashboardPage from "./pages/admin/DashboardPage";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+
+        {/* Protected/Admin Routes */}
+        <Route path="/dashboard/*" element={<AdminLayout />}>
+          {/* Default Dashboard Home */}
+          <Route index element={<DashboardPage />} />
+          <Route path="meals" element={<MealsPage />} />
+          <Route path="appointments" element={<AppointmentsPage />} />
+          <Route path="pets" element={<PetsPage />} />
+        </Route>
+      </Routes>
+
+      {/* Toast Notifications */}
+      <ToastContainer />
+    </BrowserRouter>
+  );
+}
+
+// import React from "react";
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import LoginPage from "./pages/LoginPage";
+// import RegisterPage from "./pages/RegisterPage";
+// import DashboardLayout from "./layouts/admin/AdminLayout";
+// import MealsPage from "./pages/admin/MealsPage";
+// import AppointmentsPage from "./pages/admin/AppointmentsPage";
+// import PetsPage from "./pages/admin/PetsPage";
+// import DashboardPage from "./pages/admin/DashboardPage.jsx";
+
+
 
 // export default function App() {
 //   return (
 //     <BrowserRouter>
 //       <Routes>
-//         {/* Redirect root path to /dashboard */}
-//         <Route path="/" element={<Navigate to="/dashboard" replace />} />
+//         {/* Public Routes */}
+//         <Route path="/" element={<LoginPage />} />
+//         <Route path="/login" element={<LoginPage />} /> {/* Added this line */}
+//         <Route path="/register" element={<RegisterPage />} />
 
-//         {/* <Route path="/login" element={<Login />} />
-//         <Route path="/register" element={<Register />} /> */}
-
-//         <Route element={<PrivateLayout />}>
-//           <Route path="/dashboard" element={<Dashboard />} />
-//           <Route path="/pets" element={<PetsList />} />
-//           <Route path="/appointments" element={<AppointmentsList />} />
+//         {/* Protected/Admin Routes */}
+//         <Route path="/dashboard/*" element={<DashboardLayout />}>
+//           <Route index element={<div>Welcome to Dashboard</div>} />
+//           <Route path="meals" element={<MealsPage />} />
+//           <Route path="appointments" element={<AppointmentsPage />} />
+//           <Route path="pets" element={<PetsPage />} />
+//           <Route path="/dashboard/*" element={<DashboardPage />} />
 //         </Route>
 //       </Routes>
 //     </BrowserRouter>
 //   );
 // }
-
-
-// import React from "react";
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import Navbar from "./components/Navbar";
-// import LoginForm from "./pages/login";
-// import RegisterForm from "./pages/register";
-// import Dashboard from "./pages/Dashboard";
-// import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-
-// // Placeholder route components
-// const MeditationPage = () => <div className="ml-64 p-8">Meditation Page</div>;
-// const JournalingPage = () => <div className="ml-64 p-8">Journaling Page</div>;
-// const MoodTrackerPage = () => <div className="ml-64 p-8">Mood Tracker Page</div>;
-// const ProgressPage = () => <div className="ml-64 p-8">Progress Page</div>;
-// const SettingsPage = () => <div className="ml-64 p-8">Settings Page</div>;
-
-// function App() {
-//   return (
-//     <Router>
-//       {/* Navbar at the top */}
-//       <Navbar />
-
-//       {/* Toast notifications (works globally) */}
-//       <ToastContainer position="top-right" autoClose={3000} />
-
-//       {/* Main content area */}
-//       <div className="pt-20 px-4 w-full">
-//         <Routes>
-//           {/* <Route path="/login" element={<LoginForm />} />
-//           <Route path="/register" element={<RegisterForm />} /> */}
-//           <Route path="/dashboard" element={<Dashboard/>} />
-//           <Route path="/meditation" element={<MeditationPage />} />
-//           <Route path="/journaling" element={<JournalingPage />} />
-//           <Route path="/moodtracker" element={<MoodTrackerPage />} />
-//           <Route path="/progress" element={<ProgressPage />} />
-//           <Route path="/settings" element={<SettingsPage />} />
-//         </Routes>
-//       </div>
-//     </Router>
-//   );
-// }
-
-// export default App;
-
-
-
-// src/App.jsx
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './components/Login';
-import Register from './components/Register';
-// import Dashboard from './components/Dashboard';
-
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-export default App;
